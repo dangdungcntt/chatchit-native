@@ -3,7 +3,7 @@ import {
   View, Text, TouchableOpacity, StyleSheet,
   Image, FlatList
 } from 'react-native';
-import RoomItem from './RoomItem';
+import RoomItem from '../../components/RoomItem';
 import DefaultRoomImage from '../../images/default_room_image.jpg';
 // import { NavigationActions } from 'react-navigation';
 
@@ -43,7 +43,8 @@ export default class ListRoom extends Component {
           roomId: '6',
           key: '6'
         }
-      ]
+      ],
+      refreshing: false
     }
   }
 
@@ -62,12 +63,24 @@ export default class ListRoom extends Component {
     }, 3000);
   }
 
+  onRefresh = () => {
+    this.setState({
+      refreshing: true
+    });
+    setTimeout(() => {
+      this.setState({
+        refreshing: false
+      });
+    }, 3000);
+  }
+
   _renderItem = ({item, index}) => (
     <RoomItem
         key={item.roomId}
         id={item.roomId}
         name={item.roomName}
         source={{uri: item.roomImage}}
+        numCols={2}
     />
   );
 
@@ -79,7 +92,8 @@ export default class ListRoom extends Component {
             style={listRoom}
             numColumns={2}
             initialNumToRender={4}
-            refreshing={true}
+            refreshing={this.state.refreshing}
+            onRefresh={() => this.onRefresh()}  
             ListEmptyComponent={<Text>No Room</Text>}
             //{/*onRefresh={true}*/}
             data={this.state.data}

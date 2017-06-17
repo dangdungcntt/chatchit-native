@@ -3,7 +3,7 @@ import {
   View, Text, TouchableOpacity, StyleSheet,
   Image, FlatList
 } from 'react-native';
-import RoomItem from '../ListRoom/RoomItem';
+import RoomItem from '../../components/RoomItem';
 import DefaultRoomImage from '../../images/default_room_image.jpg';
 import NewsIcon from '../../images/icon_news_red_20.png';
 import DefaultNewImage from '../../images/default_news_image.png';
@@ -56,6 +56,7 @@ export default class ListRoom extends Component {
         id={item.roomId}
         name={item.roomName}
         source={{uri: item.roomImage}}
+        numCols={1}
     />
   );
 

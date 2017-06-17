@@ -3,8 +3,8 @@ import {
   View, Image, Text, TouchableOpacity,
   StyleSheet, Dimensions
 } from 'react-native';
-import DefaultRoomImage from '../../images/default_room_image.jpg';
-import IconUserOnline from '../../images/icon_user_online.png';
+import DefaultRoomImage from '../images/default_room_image.jpg';
+import IconUserOnline from '../images/icon_user_online.png';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,10 +16,11 @@ export default class RoomItem extends Component {
 
   render() {
     const { container,
-      roomItem, wrapperImage, roomImage,
+      roomItem, wrapperImage,
       wrapperInfo, roomName, roomId,
       wrapperOnline, numberOnline
     } = style;
+    const numCols = this.props.numCols;
     const Img = 
       this.props.source.uri.indexOf('default') > -1 
       ? DefaultRoomImage : this.props.source ;
@@ -27,7 +28,10 @@ export default class RoomItem extends Component {
       <View style={container}>
         <TouchableOpacity style={roomItem}>
           <View style={wrapperImage}>
-            <Image source={Img} style={roomImage} />
+            <Image source={Img} style={{
+    width: (width - 40) / numCols,
+    height: ((width - 40) / numCols) / 16 * 9
+  }} />
           </View>
           <View style={wrapperInfo}>
             <View>
@@ -47,7 +51,6 @@ export default class RoomItem extends Component {
 
 const style = StyleSheet.create({
   container: {
-    // width: (width - 30) / 2,
     flex: 1,
     marginHorizontal: 5
   },
@@ -60,10 +63,6 @@ const style = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     marginBottom: 3
-  },
-  roomImage: {
-    height: height / 4,
-    width: height / 36 * 16
   },
   wrapperInfo: {
     borderTopWidth: 1,

@@ -19,13 +19,13 @@ class Login extends Component {
     const { container, logoContainer, title, formContainer } = style;
     const { panelLogin, isLogging, isRegistering } = this.props.loginReducer;
     const Img = isLogging || isRegistering ? 
-                  <Loading size={100} /> : 
+                  <Loading size={75} /> : 
                   <Logo width={100} height={100} />;
     const titlePage = panelLogin ? 'Login' : 'Register';
     return (
       <KeyboardAwareScrollView style={container}>
         <View style={logoContainer}>
-          {Img}
+          <View style={{height: 100}}>{Img}</View>
           <Text style={title}>{titlePage} to ChatChit</Text>
         </View>
         <View style={formContainer}>
@@ -43,7 +43,7 @@ const style = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginVertical: 20
+    marginVertical: 20,
   },
   title: {
     fontSize: 25,
