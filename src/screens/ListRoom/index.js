@@ -107,10 +107,9 @@ export default class ListRoom extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 10
+    paddingVertical: 10
   },
   listRoom: {
-    padding: 5,
-    paddingTop: 10
+    paddingHorizontal: 5
   }
 });

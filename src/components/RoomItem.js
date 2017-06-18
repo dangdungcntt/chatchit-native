@@ -29,8 +29,9 @@ export default class RoomItem extends Component {
         <TouchableOpacity style={roomItem}>
           <View style={wrapperImage}>
             <Image source={Img} style={{
-    width: (width - 40) / numCols,
-    height: ((width - 40) / numCols) / 16 * 9
+    width: (width - 40 - 30 * (numCols - 1)) / numCols,
+    height: (height * (0.22 + 0.05 * numCols)) / numCols
+    // height: ((width - 50) / numCols) / 16 * 9
   }} />
           </View>
           <View style={wrapperInfo}>
@@ -57,11 +58,11 @@ const style = StyleSheet.create({
   roomItem: {
     backgroundColor: 'white',
     marginBottom: 10
-    
   },
   wrapperImage: {
-    padding: 10,
+    // padding: 10,
     alignItems: 'center',
+    padding: 10,
     marginBottom: 3
   },
   wrapperInfo: {
