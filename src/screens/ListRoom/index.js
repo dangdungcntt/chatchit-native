@@ -110,6 +110,6 @@ const style = StyleSheet.create({
     paddingVertical: 10
   },
   listRoom: {
-    paddingHorizontal: 5
+    // paddingHorizontal: 5
   }
 });
